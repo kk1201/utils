@@ -31,7 +31,13 @@ elif [[ ! -e $2 ]]; then
 fi
 
 out1="$output_dir/$(basename "$1")".xxd
-out2="$output_dir/$(basename "$2")".xxd
+
+if [[ $(basename "$1") == $(basename "$2") ]]; then
+	out2="$output_dir/$(basename "$2")"_2.xxd
+else
+	out2="$output_dir/$(basename "$2")".xxd
+fi
+echo "$out2"
 
 xxd "$1" > "$out1" && xxd "$2" > "$out2"
 nvim -bd "$out1" "$out2"
