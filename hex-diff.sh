@@ -34,4 +34,4 @@ out1="$output_dir/$(basename "$1")".xxd
 out2="$output_dir/$(basename "$2")".xxd
 
 xxd "$1" > "$out1" && xxd "$2" > "$out2"
-nvim -d "$out1" "$out2"
+nvim -bd "$out1" "$out2"
